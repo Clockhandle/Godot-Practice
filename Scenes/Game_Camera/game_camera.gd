@@ -1,10 +1,11 @@
 extends Camera2D
 
 var target_position = Vector2.ZERO
-
+var player_nodes
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	make_current()
+	player_nodes = get_tree().get_nodes_in_group("Player")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -14,7 +15,6 @@ func _process(delta: float) -> void:
 
 
 func acquire_target() -> void:
-	var player_nodes = get_tree().get_nodes_in_group("Player")
 	if player_nodes.size() > 0:
 		var player = player_nodes[0] as Node2D
 		target_position = player.global_position
