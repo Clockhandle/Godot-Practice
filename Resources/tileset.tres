@@ -6,6 +6,7 @@
 texture = ExtResource("1_2nyxk")
 0:4/0 = 0
 0:4/0/terrain_set = 0
+0:4/0/terrain = 0
 0:4/0/probability = 20.0
 0:4/0/terrains_peering_bit/right_side = 0
 0:4/0/terrains_peering_bit/bottom_right_corner = 0

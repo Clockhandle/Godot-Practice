@@ -9,7 +9,6 @@ func _ready() -> void:
 
 
 func on_timer_timeout() -> void:
-	print("what?")
 	var player_node = get_tree().get_first_node_in_group("Player") as Node2D
 	if (player_node == null):
 		return
