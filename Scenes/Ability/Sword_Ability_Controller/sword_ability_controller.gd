@@ -2,15 +2,10 @@ extends Node
 
 const MAX_RANGE = 150
 @export var sword_ability : PackedScene
+var damage = 5
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Timer.timeout.connect(on_timer_timeout)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
 
 
 func on_timer_timeout() -> void:
@@ -32,8 +27,9 @@ func on_timer_timeout() -> void:
 		return a_distance < b_distance
 	)
 	
-	var sword_instance = sword_ability.instantiate() as Node2D
+	var sword_instance = sword_ability.instantiate() as SwordAbility
 	player_node.get_parent().add_child(sword_instance)
+	sword_instance.hitbox_component.damage = damage
 	sword_instance.global_position = enemy_nodes[0].global_position
 	#4 is the offset. we need this so that enemy and sword position isn't the same so that
 	#we can calculate the angles of the sword that will face the enemy.
