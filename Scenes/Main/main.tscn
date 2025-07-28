@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://vaxqr7kn5nop"]
+[gd_scene load_steps=12 format=4 uid="uid://vaxqr7kn5nop"]
 
 [ext_resource type="PackedScene" uid="uid://q1egu6vxm46i" path="res://Scenes/Manager/arena_time_manager.tscn" id="1_2a143"]
 [ext_resource type="TileSet" uid="uid://by8hxu08lnmyc" path="res://Resources/tileset.tres" id="1_lixft"]
@@ -7,7 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://b0h6jrmtuumwf" path="res://Scenes/UI/experience_bar.tscn" id="3_y3v7k"]
 [ext_resource type="PackedScene" uid="uid://dfxshbp5aspyr" path="res://Scenes/Manager/exp_manager.tscn" id="4_y3v7k"]
 [ext_resource type="PackedScene" uid="uid://cm245hncaadfa" path="res://Scenes/UI/arena_time_ui.tscn" id="5_p6jpk"]
+[ext_resource type="PackedScene" uid="uid://d37pj3v7seois" path="res://Scenes/Manager/upgrade_manager.tscn" id="6_hryqi"]
 [ext_resource type="PackedScene" uid="uid://tmhqigbh7hgx" path="res://Scenes/Game_Object/Player/player.tscn" id="6_y3v7k"]
+[ext_resource type="Script" uid="uid://bfum0uj2qavhs" path="res://Resources/Upgrades/ability_upgrade.gd" id="7_imbg2"]
+[ext_resource type="Resource" uid="uid://bd278s6usi55k" path="res://Resources/Upgrades/sword_rate.tres" id="8_hfg1r"]
 
 [node name="Main" type="Node"]
 
@@ -22,6 +25,10 @@ exp_manager = NodePath("../ExpManager")
 [node name="EnemyManager" parent="." instance=ExtResource("3_xlvfx")]
 
 [node name="ExpManager" parent="." instance=ExtResource("4_y3v7k")]
+
+[node name="UpgradeManager" parent="." node_paths=PackedStringArray("exp_manager") instance=ExtResource("6_hryqi")]
+upgrade_pool = Array[ExtResource("7_imbg2")]([ExtResource("8_hfg1r")])
+exp_manager = NodePath("../ExpManager")
 
 [node name="GameCamera" parent="." instance=ExtResource("1_qw60k")]
 
