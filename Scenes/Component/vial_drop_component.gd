@@ -20,5 +20,6 @@ func on_death():
 		return
 	
 	var spawn_position = (owner as Node2D).global_position
-	owner.get_parent().add_child(exp_vial_instance)
+	var entities_layer = get_tree().get_first_node_in_group("Entities_Layer")
+	entities_layer.add_child(exp_vial_instance)
 	exp_vial_instance.global_position = spawn_position
