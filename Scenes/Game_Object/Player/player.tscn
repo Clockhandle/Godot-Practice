@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://tmhqigbh7hgx"]
+[gd_scene load_steps=11 format=3 uid="uid://tmhqigbh7hgx"]
 
 [ext_resource type="Script" uid="uid://cwb6psirk2fu2" path="res://Scenes/Game_Object/Player/player.gd" id="1_ft8w5"]
 [ext_resource type="Texture2D" uid="uid://2lp0vr6x6w71" path="res://Scenes/Game_Object/Player/Player.png" id="1_s0eop"]
@@ -11,6 +11,17 @@ radius = 40.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c1ppa"]
 radius = 7.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_honxs"]
+bg_color = Color(0.247059, 0.14902, 0.192157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_142ei"]
+bg_color = Color(0.458824, 0.890196, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.247059, 0.14902, 0.192157, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ft8w5"]
 radius = 5.0
@@ -48,6 +59,19 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea2D"]
 shape = SubResource("CircleShape2D_c1ppa")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(32, 6)
+offset_left = -16.0
+offset_top = -22.0
+offset_right = 16.0
+offset_bottom = -16.0
+pivot_offset = Vector2(16, 3)
+theme_override_styles/background = SubResource("StyleBoxFlat_honxs")
+theme_override_styles/fill = SubResource("StyleBoxFlat_142ei")
+max_value = 1.0
+value = 0.5
+show_percentage = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_s0eop")
