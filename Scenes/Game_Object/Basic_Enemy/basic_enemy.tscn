@@ -21,7 +21,6 @@ script = ExtResource("1_v5ije")
 [node name="HealthComponent" parent="." instance=ExtResource("2_xvtdr")]
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_760iq")]
-vial_spawn_chance = 0.8
 health_component = NodePath("../HealthComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -13,7 +13,7 @@ func _ready() -> void:
 
 
 func on_death():
-	if(randf() < vial_spawn_chance):
+	if(randf() > vial_spawn_chance):
 		return
 	
 	if(not owner is Node2D):
