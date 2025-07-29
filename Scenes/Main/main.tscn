@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://vaxqr7kn5nop"]
+[gd_scene load_steps=14 format=4 uid="uid://vaxqr7kn5nop"]
 
 [ext_resource type="PackedScene" uid="uid://q1egu6vxm46i" path="res://Scenes/Manager/arena_time_manager.tscn" id="1_2a143"]
+[ext_resource type="Script" uid="uid://drytlq5iy8c6t" path="res://Scenes/Main/main.gd" id="1_4e4y2"]
 [ext_resource type="TileSet" uid="uid://by8hxu08lnmyc" path="res://Resources/tileset.tres" id="1_lixft"]
 [ext_resource type="PackedScene" uid="uid://ct8welbf3m0xk" path="res://Scenes/Game_Object/Game_Camera/game_camera.tscn" id="1_qw60k"]
+[ext_resource type="PackedScene" uid="uid://do21xtp23h7up" path="res://Scenes/UI/end_screen.tscn" id="2_6t3k2"]
 [ext_resource type="PackedScene" uid="uid://cn6lascasy2t4" path="res://Scenes/Manager/enemy_manager.tscn" id="3_xlvfx"]
 [ext_resource type="PackedScene" uid="uid://b0h6jrmtuumwf" path="res://Scenes/UI/experience_bar.tscn" id="3_y3v7k"]
 [ext_resource type="PackedScene" uid="uid://dfxshbp5aspyr" path="res://Scenes/Manager/exp_manager.tscn" id="4_y3v7k"]
@@ -13,6 +15,8 @@
 [ext_resource type="Resource" uid="uid://bd278s6usi55k" path="res://Resources/Upgrades/sword_rate.tres" id="8_hfg1r"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_4e4y2")
+end_screen_scene = ExtResource("2_6t3k2")
 
 [node name="ArenaTimeManager" parent="." instance=ExtResource("1_2a143")]
 
@@ -43,6 +47,7 @@ tile_set = ExtResource("1_lixft")
 y_sort_enabled = true
 
 [node name="Player" parent="Entities" instance=ExtResource("6_y3v7k")]
+unique_name_in_owner = true
 position = Vector2(514, 266)
 
 [node name="Foreground" type="Node2D" parent="." groups=["Foreground_Layer"]]
