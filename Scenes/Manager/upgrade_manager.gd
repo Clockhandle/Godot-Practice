@@ -8,18 +8,6 @@ var current_upgrades = {}
 
 func _ready() -> void:
 	exp_manager.level_up.connect(on_level_up)
-	
-
-
-func on_level_up(level: int):
-	var choosen_upgrade = upgrade_pool.pick_random() as AbilityUpgrade
-	if (choosen_upgrade == null):
-		return
-	
-	var upgrade_instance = upgrade_scene.instantiate()
-	add_child(upgrade_instance)
-	upgrade_instance.set_ability_upgrades([choosen_upgrade] as Array[AbilityUpgrade])
-	upgrade_instance.upgrade_selected.connect(on_upgrade_selected)
 
 
 func apply_upgrade(upgrade: AbilityUpgrade):
@@ -32,7 +20,26 @@ func apply_upgrade(upgrade: AbilityUpgrade):
 	else:
 		current_upgrades[upgrade.id]["quantity"] += 1
 	GameEvents.emit_ability_upgrade_added(upgrade, current_upgrades)
-	print(current_upgrades)
+
+
+func pick_upgrades():
+	var choosen_upgrades: Array[AbilityUpgrade] = []
+	var filtered_upgrades = upgrade_pool.duplicate()
+	for i in 2:
+		var choosen_upgrade = filtered_upgrades.pick_random() as AbilityUpgrade
+		choosen_upgrades.append(choosen_upgrade)
+		filtered_upgrades = filtered_upgrades.filter(func (upgrade): return upgrade.id != choosen_upgrade.id)
+	
+	return choosen_upgrades
+
 
 func on_upgrade_selected(upgrade: AbilityUpgrade):
 	apply_upgrade(upgrade)
+
+
+func on_level_up(level: int):
+	var upgrade_instance = upgrade_scene.instantiate()
+	add_child(upgrade_instance)
+	var choosen_upgrades = pick_upgrades()
+	upgrade_instance.set_ability_upgrades(choosen_upgrades as Array[AbilityUpgrade])
+	upgrade_instance.upgrade_selected.connect(on_upgrade_selected)

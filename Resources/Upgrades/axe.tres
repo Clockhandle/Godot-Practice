@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://cfuqjo7chc4lq"]
+
+[ext_resource type="PackedScene" uid="uid://djvlh3cxdtbu0" path="res://Scenes/Ability/Axe_Ability_Controller/axe_ability_controller.tscn" id="1_k7sny"]
+[ext_resource type="Script" uid="uid://dmq8cxxron541" path="res://Resources/Upgrades/ability.gd" id="2_b1fe2"]
+
+[resource]
+script = ExtResource("2_b1fe2")
+ability_controller_sceen = ExtResource("1_k7sny")
+id = "axe"
+name = "Axe"
+description = "Creates an axe that spins around the player in spiral motion."

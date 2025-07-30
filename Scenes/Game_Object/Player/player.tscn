@@ -31,9 +31,9 @@ collision_layer = 0
 motion_mode = 1
 script = ExtResource("1_ft8w5")
 
-[node name="Ability" type="Node" parent="."]
+[node name="Abilities" type="Node" parent="."]
 
-[node name="SwordAbilityController" parent="Ability" instance=ExtResource("2_h54ih")]
+[node name="SwordAbilityController" parent="Abilities" instance=ExtResource("2_h54ih")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_honxs")]
 
